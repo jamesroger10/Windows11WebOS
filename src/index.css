@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@import "./macos/styles/macos.css";
+
+@layer base {
+  :root {
+    --win-accent: #0078d4;
+    --win-accent-hover: #1084d8;
+    --win-accent-active: #006cbe;
+    
+    --win-bg-mica: rgba(32, 32, 32, 0.82);
+    --win-bg-acrylic: rgba(36, 36, 36, 0.70);
+    --win-bg-surface: rgba(45, 45, 45, 0.95);
+    --win-bg-subtle: rgba(255, 255, 255, 0.06);
+    --win-bg-subtle-hover: rgba(255, 255, 255, 0.09);
+    --win-bg-subtle-active: rgba(255, 255, 255, 0.04);
+    
+    --win-border: rgba(255, 255, 255, 0.09);
+    --win-border-subtle: rgba(255, 255, 255, 0.05);
+    
+    --win-text-primary: #ffffff;
+    --win-text-secondary: rgba(255, 255, 255, 0.70);
+    --win-text-tertiary: rgba(255, 255, 255, 0.45);
+    --win-text-disabled: rgba(255, 255, 255, 0.36);
+  }
+
+  * {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    color: var(--win-text-primary);
+    background-color: #0b0b0f;
+    overflow: hidden;
+  }
+}
+
+/* Windows 11 Mica & Acrylic materials */
+.win-mica {
+  background-color: var(--win-bg-mica);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid var(--win-border);
+}
+
+.win-acrylic {
+  background-color: var(--win-bg-acrylic);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border: 1px solid var(--win-border);
+}
+
+.win-surface {
+  background-color: var(--win-bg-surface);
+  border: 1px solid var(--win-border-subtle);
+}
+
+.win-taskbar {
+  background-color: rgba(24, 24, 27, 0.78);
+  backdrop-filter: blur(30px) saturate(190%);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Windows 11 Shadows */
+.win-window-shadow {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.win-flyout-shadow {
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.win-menu-shadow {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* Custom Windows 11 Thin Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Animation utilities */
+@keyframes win-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes win-flyout-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-win-pop {
+  animation: win-scale-in 0.18s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+.animate-win-flyout {
+  animation: win-flyout-in 0.2s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
